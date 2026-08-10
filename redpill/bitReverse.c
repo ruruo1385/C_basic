@@ -28,9 +28,9 @@ void reversal(uint8_t bit){
     threeSix = ((bit & 0x20) >> 3) | ((bit & 0x04)<<3);
     fourFive = ((bit & 0x10) >> 1) | ((bit & 0x08)<<1);
     sum = oneEight | twoSeven | threeSix | fourFive;
-    printf("Input: 0x%2x",bit);
+    printf("Input: 0x%02x",bit);
     print_binary(bit);
-    printf("Output: 0x%2x",sum);
+    printf("Output: 0x%02x",sum);
     print_binary(sum);
 }
 
