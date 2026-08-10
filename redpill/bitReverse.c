@@ -46,7 +46,7 @@ void reversal(){
 int main(int argc, char const *argv[])
 {
     printf("=== Day 4: Bitwise Reverse (Mirroring) ===\r\n");
-    reversal(0xD2);
+    reversal();
 
     return 0;
 }
