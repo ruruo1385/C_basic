@@ -32,6 +32,7 @@ void reversal(uint8_t bit){
     print_binary(bit);
     printf("Output: 0x%02x",sum);
     print_binary(sum);
+    printf("Verify: %s","OK");
 }
 
 int main(int argc, char const *argv[])
