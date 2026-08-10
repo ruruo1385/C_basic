@@ -18,30 +18,35 @@ void print_binary(uint8_t data){
     printf(") "); 
     printf("\n");
 }
-void reversal(uint8_t bit){
-    //1101 0010 -> 1101 0010 & 1111 0000 = 0000 1101 | 1101 0010 & 0000 1111 = 0010 0000
+void reversal(){
+    uint8_t input[] = {0xD2,0x0F,0xAA,0x12};
+    uint8_t arr[] = {0x4B, 0xF0,0x55,0x48};
     uint8_t sum;
     uint8_t oneEight, twoSeven, threeSix, fourFive;
     //각 위치 별로 스왑
-    oneEight = ((bit & 0x80) >> 7) | ((bit & 0x01) << 7);
-    twoSeven = ((bit & 0x40) >> 5) | ((bit & 0x02)<<5);
-    threeSix = ((bit & 0x20) >> 3) | ((bit & 0x04)<<3);
-    fourFive = ((bit & 0x10) >> 1) | ((bit & 0x08)<<1);
-    sum = oneEight | twoSeven | threeSix | fourFive;
-    printf("Input: 0x%02x",bit);
-    print_binary(bit);
-    printf("Output: 0x%02x",sum);
-    print_binary(sum);
-    printf("Verify: %s","OK");
+    for(int i =0 ; i < sizeof(arr); i++ ){
+        oneEight = ((input[i] & 0x80) >> 7) | ((input[i] & 0x01) << 7);
+        twoSeven = ((input[i] & 0x40) >> 5) | ((input[i] & 0x02)<<5);
+        threeSix = ((input[i] & 0x20) >> 3) | ((input[i] & 0x04)<<3);
+        fourFive = ((input[i] & 0x10) >> 1) | ((input[i] & 0x08)<<1);
+        sum = oneEight | twoSeven | threeSix | fourFive;
+        printf("Input: 0x%02x",input[i]);
+        print_binary(input[i]);
+        printf("Output: 0x%02x",sum);
+        print_binary(sum);
+        if(sum == arr[i]){
+            printf("Verify: OK\r\n");
+        }else{
+            printf("Verify: False\r\n");
+        }
+    }
+    
 }
 
 int main(int argc, char const *argv[])
 {
     printf("=== Day 4: Bitwise Reverse (Mirroring) ===\r\n");
     reversal(0xD2);
-    reversal(0x0F);
-    reversal(0xAA);
-    reversal(0x12);
 
     return 0;
 }
