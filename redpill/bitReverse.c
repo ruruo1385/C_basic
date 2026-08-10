@@ -6,6 +6,7 @@
 
 
 void print_binary(uint8_t data){
+    printf(" ( ");
     for (int i = 7; i >= 0; i--)
     {   
         uint8_t bit = (data>>i)&1;
@@ -14,6 +15,7 @@ void print_binary(uint8_t data){
             printf(" ");
         }
     }
+    printf(") "); 
     printf("\n");
 }
 void reversal(uint8_t bit){
@@ -26,9 +28,9 @@ void reversal(uint8_t bit){
     threeSix = ((bit & 0x20) >> 3) | ((bit & 0x04)<<3);
     fourFive = ((bit & 0x10) >> 1) | ((bit & 0x08)<<1);
     sum = oneEight | twoSeven | threeSix | fourFive;
-    printf("원본 ");
+    printf("Input: 0x%2x",bit);
     print_binary(bit);
-    printf("수정본 ");
+    printf("Output: 0x%2x",sum);
     print_binary(sum);
 }
 
