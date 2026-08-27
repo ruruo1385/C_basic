@@ -16,7 +16,7 @@ void setBit(int index){
     printf(">> Index %d allocated. (Byte %d, Bit %d set)\n",
            index, byte, bit);
 }
-void bitmapAlloc(int index){
+int bitmapAlloc(void){
     for(int i =0; i < TOTAL; i++){
         if(!checkAlloc(i)){
             setBit(i);
@@ -32,8 +32,46 @@ void bitmapFree(int index){
     printf(">> Index %d freed. (Byte %d, Bit %d cleared)\n",
            index, byte, bit);
 }
+void printBitmap(void)
+{
+    printf("[Bitmap Visual] ");
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        for (int bit = 0; bit < 8; bit++)
+        {
+            printf("%d", (bitmap[i] >> bit) & 1);
+        }
+
+        if (i < SIZE - 1)
+            printf(" | ");
+    }
+
+    printf("\n");
+}
+
 int main(int argc, char const *argv[])
 {
-    /* code */
+    printf("=== Day 17: Bitmap Manager ===\n\n");
+
+    // 0 ~ 7까지 할당
+    for (int i = 0; i < 8; i++)
+    {
+        bitmapAlloc();
+    }
+
+    printBitmap();
+
+    printf("\nFreeing index 2...\n");
+
+    bitmapFree(2);
+
+    printBitmap();
+
+    printf("\nAllocating again (expecting index 2)...\n");
+
+    bitmapAlloc();
+
+    printBitmap();
     return 0;
 }
