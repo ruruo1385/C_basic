@@ -12,6 +12,7 @@ void recursive(int depth){
     printf("Current Stack Usage: %zu bytes\n",usage);
     if(usage > STACK_LIMIT){
         printf("Soft Limit Exceeded\n");
+        printf("Limit: 4096, Used: %zu\n", usage);
         return;
     }
     recursive(depth + 1);
@@ -21,6 +22,7 @@ int main(int argc, char const *argv[])
 {
     printf("Soft Limit: %d bytes\n",STACK_LIMIT);
     recursive(0);
+    printf("\n>> System survived. Returned safely to main.\n");
     /* code */
     return 0;
 }
